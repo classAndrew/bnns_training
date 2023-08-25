@@ -139,7 +139,7 @@ MSELossLayer mse_loss_layer(size_t n) {
     float *in_delta = rand_mat(1, n);
     float *out_delta = rand_mat(1, n);
     BNNSNDArrayDescriptor in_delta_desc = get_desc(0, BNNSDataLayoutVector, (size_t[]){n, 0, 0, 0, 0, 0, 0, 0 }, in_delta); 
-    BNNSNDArrayDescriptor out_delta_desc = get_desc(0, BNNSDataLayoutVector, (size_t[]){n, 0, 0, 0, 0, 0, 0, 0 }, out_delta); 
+    BNNSNDArrayDescriptor out_delta_desc = get_desc(0, BNNSDataLayoutVector, (size_t[]){1, 0, 0, 0, 0, 0, 0, 0 }, out_delta); 
 
     BNNSLayerParametersLossBase loss_params = {
         .function = BNNSLossFunctionMeanSquareError,

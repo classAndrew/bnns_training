@@ -19,7 +19,6 @@ TEST(TestTest, Test1) {
     MSELossLayer mse_loss = mse_loss_layer(n);
     OutputLayer last_layer = output_layer(1);
 
-
     for (int iter = 0; iter < 100; iter++) {
         // printf("\n\niter: %d\n", iter);
         // since dense1 is the first layer, initialize its input buffer w/ sample
