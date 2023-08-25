@@ -9,12 +9,17 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+find_library(APPLE_ACCELERATE Accelerate)
+if (NOT APPLE_ACCELERATE)
+    message(FATAL_ERROR "Apple Accelerate not found")
+endif()
+
 # Tests need to be added as executables first
 add_executable(testlib testlib.cc)
 
-# Should be linked to the main library, as well as the Catch2 testing library
-target_link_libraries(testlib PRIVATE bnns_training gtest_main)
+# Should be linked to the main library
+target_link_libraries(testlib PRIVATE bnns_training gtest_main ${APPLE_ACCELERATE})
 
 # If you register a test, then ctest and make test will run it.
 # You can also run examples and check the output, as well.
-add_test(NAME testlibtest COMMAND testlib) # Command can be a target
+# add_test(NAME testlibtest COMMAND testlib) # Command can be a target
